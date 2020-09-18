@@ -1,0 +1,52 @@
+﻿@using ER.Domain.Enumerations
+
+@model ER.Application.ViewModels.RecordViewModel
+@{
+    Layout = "_LayoutAdmin";
+}
+<h3>Atualizar Registro</h3>
+<hr>
+<form class="form-horizontal" asp-controller="Records" asp-action="Edit" method="POST">
+    <input type="hidden" name="Id" value="@Model?.Id" />
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <spam class="fa fa-user"></spam>
+                    </span>
+                </div>
+                <input asp-for="EmployeeName" placeholder="Nome do funcionário" class="form-control">
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-6 input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <spam class="fa fa-clock"></spam>
+                    </span>
+                </div>
+                <input asp-for="CreatedAt" class="form-control">
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-6 input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <spam class="fa fa-door-open"></spam>
+                    </span>
+                </div>
+                <select asp-for="TypeId" asp-items="@(new SelectList(Enumeration.GetAll<RecordTypeEnumeration>(), "Id", "Name", Model?.TypeId))" itemid="Model.TypeId" class="form-control"></select>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-6">
+                <a asp-action="Index" class="btn btn-outline-primary">Retornar</a>
+                <button class="btn btn-success ml-2">Atualizar</button>
+            </div>
+        </div>
+    </div>
+</form>

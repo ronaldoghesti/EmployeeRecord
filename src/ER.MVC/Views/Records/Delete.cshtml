@@ -1,0 +1,52 @@
+﻿@using ER.Domain.Enumerations
+
+@model ER.Application.ViewModels.RecordViewModel
+@{
+    Layout = "_LayoutAdmin";
+}
+<h3>Deletar Registro</h3>
+<hr>
+<form class="form-horizontal" asp-controller="Records" asp-action="Delete" method="POST">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <spam class="fa fa-user"></spam>
+                    </span>
+                </div>
+                <input disabled asp-for="EmployeeName" placeholder="Nome do funcionário" class="form-control">
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-6 input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <spam class="fa fa-clock"></spam>
+                    </span>
+                </div>
+                <input disabled asp-for="CreatedAt" class="form-control">
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-6 input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <spam class="fa fa-door-open"></spam>
+                    </span>
+                </div>
+                <input disabled asp-for="TypeDescription" class="form-control">
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-6">
+                <a asp-action="Index" class="btn btn-outline-primary">Retornar</a>
+                <button class="btn btn-danger ml-2">Deletar</button>
+            </div>
+        </div>
+    </div>
+</form>

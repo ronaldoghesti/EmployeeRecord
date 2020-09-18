@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ER.Application.ViewModels.RecordViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Registros</h1>
+<hr />
+<a asp-action="Create" asp-controller="Records" class="btn btn-success">Adicionar novo registro</a>
+<hr />
+
+<table id="records" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>Data e Hora</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var record in Model)
+        {
+            <tr>
+                <td>@record.EmployeeName</td>
+                <td><spam class="fa fa-@(record.TypeId == 1 ? "play-circle red" : "pause")"></spam> @record.TypeDescription</td>
+                <td>@record.CreatedAt</td>
+                <td>
+                    <a class="btn btn-outline-info btn-sm" asp-action="Edit" asp-route-id="@record.Id">
+                        <span class="fa fa-pencil-alt"></span>
+                    </a>
+
+                    <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@record.Id">
+                        <span class="fa fa-trash"></span>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script src="~/js/Records/index.js"></script>
+}
